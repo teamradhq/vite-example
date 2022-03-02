@@ -89,3 +89,4 @@ uploads/
 
 # Make sure to include log folders from inside craft plugins as they may contain templates and other important files.
 !craft/plugins/**/logs
+dist
