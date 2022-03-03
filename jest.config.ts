@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from '@jest/types';
+
+const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   clearMocks: true,
@@ -29,3 +31,5 @@ module.exports = {
     '!**/vendor/**',
   ],
 };
+
+export default config;
