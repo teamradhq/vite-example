@@ -17,9 +17,14 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/testing-library__jest-dom": "^5.14.3",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@vitejs/plugin-react": "^1.0.7",
     "autoprefixer": "^10.4.2",
     "cssnano": "^5.1.0",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "jsdom": "^19.0.0",
@@ -29,7 +34,8 @@
     "stylelint-config-standard": "^25.0.0",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.4",
-    "vite": "^2.8.0"
+    "vite": "^2.8.0",
+    "vite-plugin-eslint": "^1.3.0"
   },
   "browserslist": [
     "last 2 versions"
@@ -38,6 +44,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "lint": "eslint ./ --fix --ignore-pattern \"dist/**/*.*\"",
     "test": "jest --config ./jest.config.js",
     "test:watch": "jest --config ./jest.config.js --watchAll",
     "test:coverage": "jest --config ./jest.config.js --coverage --coverageDirectory ./coverage"

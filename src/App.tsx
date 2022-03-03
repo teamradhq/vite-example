@@ -1,4 +1,4 @@
-import { useState, MouseEventHandler, FC } from 'react'
+import { useState, MouseEventHandler, FC } from 'react';
 import './App.css';
 
 type ButtonProps = {
@@ -6,11 +6,13 @@ type ButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>,
 };
 
+/* eslint-disable @typescript-eslint/no-empty-function */
 const Button: FC<ButtonProps> = ({ text, onClick }: ButtonProps) => (
   <button className="ui-button" type="button" onClick={onClick || (() => {})}>
     <span>{text}</span>
   </button>
 );
+/* eslint-enable @typescript-eslint/no-empty-function */
 
 type CountProps = {
   count: number,
@@ -18,10 +20,10 @@ type CountProps = {
 
 const DisplayCount: FC<CountProps> = ({ count }) => (
   <p className="ui-count">Count is: {count}!</p>
-)
+);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const updateCount = (increment: number) => () => {
     setCount(count + increment);
@@ -37,7 +39,7 @@ function App() {
         </p>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
