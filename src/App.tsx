@@ -35,7 +35,7 @@ function App() {
         <DisplayCount count={count} />
         <p>
           <Button text="+" onClick={updateCount(1)} />
-          <Button text="-" onClick={updateCount(1)} />
+          <Button text="-" onClick={updateCount(-1)} />
         </p>
       </header>
     </div>
