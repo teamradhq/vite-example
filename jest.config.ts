@@ -24,6 +24,7 @@ const config: Config.InitialOptions = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/src/$1',
+    '^.+\\.(sass|css)$': '<rootDir>/src/__mocks__/cssStub.js',
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
