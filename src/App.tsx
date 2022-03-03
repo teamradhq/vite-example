@@ -32,7 +32,8 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>{import.meta.env.APP_TITLE}</h1>
+        <h1>{process.env.APP_TITLE}</h1>
+        <h2>Counter</h2>
         <DisplayCount count={count} />
         <p>
           <Button text="+" onClick={updateCount(1)} />
