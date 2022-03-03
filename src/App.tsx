@@ -1,6 +1,24 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState, MouseEventHandler, FC } from 'react'
+import './App.css';
+
+type ButtonProps = {
+  text: string,
+  onClick: MouseEventHandler<HTMLButtonElement>,
+};
+
+const Button: FC<ButtonProps> = ({ text, onClick }: ButtonProps) => (
+  <button className="ui-button" type="button" onClick={onClick || (() => {})}>
+    <span>{text}</span>
+  </button>
+);
+
+type CountProps = {
+  count: number,
+};
+
+const DisplayCount: FC<CountProps> = ({ count }) => (
+  <p className="ui-count">Count is: {count}!</p>
+)
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,40 +28,12 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
+    <div className="app">
+      <header className="app-header">
+        <DisplayCount count={count} />
         <p>
-          <button type="button" onClick={updateCount(1)}>
-            +
-          </button>
-          <p>count is: {count}</p>
-          <button type="button" onClick={updateCount(-1)}>
-            -
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
+          <Button text="+" onClick={updateCount(1)} />
+          <Button text="-" onClick={updateCount(1)} />
         </p>
       </header>
     </div>
