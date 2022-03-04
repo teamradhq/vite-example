@@ -1,5 +1,6 @@
 import {
   createSlice,
+  Draft,
   PayloadAction,
 } from '@reduxjs/toolkit';
 import { uuid } from '@src/services/uuid';
@@ -15,15 +16,18 @@ type Tag = {
 
 type NewTag = Partial<Tag> & Pick<Tag, 'name'>
 
+type TagDialog = NullableType<'delete' | 'edit'>;
+
+type InitialState = {
+  activeDialog: TagDialog,
+  activeIndex: number,
+  data: Tag[],
+};
+
 /**
  * Generate a unique key for a tag.
  */
 const tagKey = () => uuid({ prefix: 'tag' });
-
-type InitialState = {
-  activeIndex: number,
-  data: Tag[],
-};
 
 const newTag = (name: string): Tag => ({
   name,
@@ -32,6 +36,7 @@ const newTag = (name: string): Tag => ({
 });
 
 const initialState: InitialState = {
+  activeDialog: null,
   activeIndex: -1,
   data: [
     newTag('First'),
@@ -40,6 +45,17 @@ const initialState: InitialState = {
     newTag('Fourth'),
     newTag('Fifth'),
   ],
+};
+
+type DraftState = Draft<InitialState>;
+
+const updateActiveIndex = (state: DraftState, action: PayloadAction<number>) => {
+  const index = action.payload;
+  if (index < 0 || index >= state.data.length) {
+    state.activeIndex = -1;
+  }
+
+  state.activeIndex = index;
 };
 
 /**
@@ -89,9 +105,14 @@ const sortTags = (state: InitialState): InitialState['data'] => {
   });
 
   return reindexTags({
-    activeIndex: state.activeIndex,
+    ...state,
     data: sorted,
   });
+};
+
+type ActiveDialogPayload = {
+  dialog: TagDialog,
+  index?: number,
 };
 
 export const tagsSlice = createSlice({
@@ -101,14 +122,13 @@ export const tagsSlice = createSlice({
     data: sortTags(initialState),
   },
   reducers: {
-    setActiveIndex: (state, action: PayloadAction<number>) => {
-      const index = action.payload;
-      if (index < 0 || index >= state.data.length) {
-        state.activeIndex = -1;
-      }
+    setActiveDialog: (state, action: PayloadAction<ActiveDialogPayload>) => {
+      const { dialog, index } = action.payload;
 
-      state.activeIndex = index;
+      state.activeDialog = dialog;
+      state.activeIndex = Number(index) > -1 ? 0 : -1;
     },
+    setActiveIndex: updateActiveIndex,
     addTag: (state, action: PayloadAction<NewTag>) => {
       const tag = action.payload;
 
@@ -116,12 +136,7 @@ export const tagsSlice = createSlice({
         return;
       }
 
-      state.data.push({
-        ...tag,
-        index: state.data.length,
-        key: tagKey(),
-      });
-
+      state.data.push(newTag(tag.name));
       state.data = sortTags(state);
     },
   },
@@ -129,10 +144,12 @@ export const tagsSlice = createSlice({
 
 export const {
   addTag,
+  setActiveDialog,
   setActiveIndex,
 } = tagsSlice.actions;
 
 export const selectTags = (state: RootState) => state.tags.data;
+export const selectActiveDialog = (state: RootState) => state.tags.activeDialog;
 export const selectActiveIndex = (state: RootState) => state.tags.activeIndex;
 export const selectActiveTag = (state: RootState) => (
   state.tags.data[selectActiveIndex(state)] || null
