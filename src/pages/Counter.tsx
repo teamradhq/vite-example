@@ -1,9 +1,10 @@
 import {
-  useState,
-  // MouseEventHandler,
   FC,
 } from 'react';
 
+import { useAppSelector, useAppDispatch } from '@src/store/hooks';
+import { increment, decrement } from '@src/store/counterSlice';
+import { selectCounter } from '@src/store/selectors';
 import { Button } from '@src/components/Button';
 
 import './Counter.css';
@@ -17,19 +18,16 @@ const DisplayCount: FC<CountProps> = ({ count }) => (
 );
 
 export function Counter() {
-  const [count, setCount] = useState(0);
-
-  const updateCount = (increment: number) => () => {
-    setCount(count + increment);
-  };
+  const count = useAppSelector(selectCounter);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="page page-counter">
       <h2>Counter</h2>
       <DisplayCount count={count} />
       <p className="increment">
-        <Button text="+" onClick={updateCount(1)} />
-        <Button text="-" onClick={updateCount(-1)} />
+        <Button text="-" onClick={() => dispatch(decrement())} />
+        <Button text="+" onClick={() => dispatch(increment())} />
       </p>
     </div>
   );
