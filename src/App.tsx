@@ -1,15 +1,19 @@
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { v4 as uuid } from 'uuid';
+import { uuid } from '@src/services/uuid';
 
 import { store } from '@src/store';
 import './App.css';
 import { Counter } from '@src/pages/Counter';
+import { Tags } from '@src/pages/Tags';
 
-const links = [
-  ['/', 'Home', uuid()],
-  ['/about', 'About', uuid()],
-  ['/counter', 'Counter', uuid()],
+const pageKey = () => uuid({ prefix: 'page' });
+
+const links: [string, string, string, typeof Counter?][] = [
+  ['/', 'Home', pageKey()],
+  ['/about', 'About', pageKey()],
+  ['/counter', 'Counter', pageKey(), Counter],
+  ['/data', 'Tags', pageKey(), Tags],
 ];
 
 function App() {
@@ -22,19 +26,19 @@ function App() {
         </header>
         <nav>
           <ul>
-            {links.map(([route, title, key]) => (
-              <li key={key}>
+            {links.map(([path, title, key]) => (
+              <li key={`link-${key}`}>
                 <NavLink
-                  to={route}
+                  to={path}
                 >{title}</NavLink>
               </li>
              ))}
           </ul>
         </nav>
         <Routes>
-          <Route path="/" element={<>Home</>} />
-          <Route path="/about" element={<>About</>} />
-          <Route path="/counter" element={<Counter />} />
+          {links.map(([path, title, key, Component]) => (
+            <Route key={`route-${key}`} path={path} element={Component ? <Component /> : <>{title}</>} />
+          ))}
         </Routes>
       </div>
     </Provider>

@@ -26,7 +26,7 @@ nav {
   margin-bottom: 1em;
 
   li a {
-    color: #333;
+    color: #ccc;
     display: inline-block;
     margin: 0 0.5em;
     padding: 0.5em;
@@ -50,6 +50,6 @@ nav {
 
   [aria-current="page"] {
     font-weight: bold;
-    color: #111;
+    color: #eee;
   }
 }

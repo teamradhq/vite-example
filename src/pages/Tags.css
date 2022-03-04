@@ -1,0 +1,26 @@
+.tag-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.tags-list li {
+  display: flex;
+
+  > * {
+    margin: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.tags-list > li {
+  &:nth-of-type(2n) {
+    background-color: #444;
+  }
+}
+
+.tag-label {
+  font-weight: bold;
+  flex: auto auto 0;
+  min-width: 7.5em;
+}

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { counterReducer } from '@src/store/counterSlice';
+import { tagsReducer } from '@src/store/tagsSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    tags: tagsReducer,
   },
 });
 
