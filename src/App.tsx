@@ -1,45 +1,39 @@
-import { useState, MouseEventHandler, FC } from 'react';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
+
 import './App.css';
+import { Counter } from '@src/pages/Counter';
 
-type ButtonProps = {
-  text: string,
-  onClick: MouseEventHandler<HTMLButtonElement>,
-};
 
-/* eslint-disable @typescript-eslint/no-empty-function */
-const Button: FC<ButtonProps> = ({ text, onClick }: ButtonProps) => (
-  <button className="ui-button" type="button" onClick={onClick || (() => {})}>
-    <span>{text}</span>
-  </button>
-);
-/* eslint-enable @typescript-eslint/no-empty-function */
-
-type CountProps = {
-  count: number,
-};
-
-const DisplayCount: FC<CountProps> = ({ count }) => (
-  <p className="ui-count">Count is: {count}!</p>
-);
+const links = [
+  ['/', 'Home', uuid()],
+  ['/about', 'About', uuid()],
+  ['/counter', 'Counter', uuid()],
+];
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const updateCount = (increment: number) => () => {
-    setCount(count + increment);
-  };
 
   return (
     <div className="app">
       <header className="app-header">
         <h1>{process.env.APP_TITLE}</h1>
-        <h2>Counter</h2>
-        <DisplayCount count={count} />
-        <p>
-          <Button text="+" onClick={updateCount(1)} />
-          <Button text="-" onClick={updateCount(-1)} />
-        </p>
       </header>
+      <nav>
+        <ul>
+          {links.map(([route, title, key]) => (
+            <li key={key}>
+              <NavLink
+                to={route}
+              >{title}</NavLink>
+            </li>
+           ))}
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<>Home</>} />
+        <Route path="/about" element={<>About</>} />
+        <Route path="/counter" element={<Counter />} />
+      </Routes>
     </div>
   );
 }
