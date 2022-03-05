@@ -17,7 +17,12 @@
     "jsx": "react-jsx",
     "paths": {
       "@src/*": ["./src/*"]
-    }
+    },
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types",
+      "./node_modules/immer/dist/immer.d.ts",
+    ]
   },
   "include": ["src", "jest.*", "vite.*"],
   "references": [{ "path": "./tsconfig.node.json" }]
