@@ -1,0 +1,18 @@
+.ui-modal {
+  border-radius: 1rem;
+  background-color: #aaa;
+  width: 50vw;
+  height: 50vh;
+}
+
+.ui-modal-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0 0 0 / 75%);
+}

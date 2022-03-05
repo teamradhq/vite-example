@@ -13,6 +13,7 @@ import './Tags.css';
 import { TagListItem } from '@src/components/TagListItem';
 import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
+import { Modal } from '@src/components/Modal';
 
 export function Tags() {
   const dispatch = useAppDispatch();
@@ -54,6 +55,9 @@ export function Tags() {
       </ul>
       <TagEdit />
       <TagDelete />
+      <Modal text="Awesome" >
+        <h1>This is some Content</h1>
+      </Modal>
     </div>
   );
 }

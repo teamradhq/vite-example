@@ -8,6 +8,11 @@ declare namespace Props {
     onClick?: React.MouseEventHandler<HTMLButtonElement>,
   }
 
+  interface Modal extends Button {
+    onCancel?: Button['onClick'],
+    onAccept?: Button['onClick'],
+  }
+
   interface TagListItem {
     index: number;
   }
