@@ -9,7 +9,7 @@ import { Draft, PayloadAction } from '@reduxjs/toolkit';
  * @param state
  * @param action
  */
-export const updateActiveIndex = (state: Draft<State.Tags.Store>, action: PayloadAction<number>) => {
+export const setActiveIndex = (state: Draft<State.Tags.Store>, action: PayloadAction<number>) => {
   const index = action.payload;
   if (index < 0 || index >= state.data.length) {
     state.activeIndex = -1;

@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { RootState } from '@src/store';
+import * as actions from '@src/store/tagsSlice/actions';
+
 import {
-  addNewTag,
   newTag,
   sortTags,
-  updateActiveDialog,
-  updateActiveIndex,
 } from '@src/store/tagsSlice/process';
 
 const initialState: State.Tags.Store = {
@@ -28,9 +27,9 @@ export const tagsSlice = createSlice({
     data: sortTags(initialState),
   },
   reducers: {
-    setActiveDialog: updateActiveDialog,
-    setActiveIndex: updateActiveIndex,
-    addTag: addNewTag,
+    setActiveDialog: actions.setActiveDialog,
+    setActiveIndex: actions.setActiveIndex,
+    addTag: actions.addTag,
   },
 });
 

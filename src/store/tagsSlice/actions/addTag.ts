@@ -9,7 +9,7 @@ import { sortTags } from '@src/store/tagsSlice/process/sortTags';
  * @param state
  * @param action
  */
-export function addNewTag(state: Draft<State.Tags.Store>, action: PayloadAction<State.Tags.New>) {
+export function addTag(state: Draft<State.Tags.Store>, action: PayloadAction<State.Tags.New>) {
   const tag = action.payload;
 
   if (!tag.name || tagExists(state, tag)) {
