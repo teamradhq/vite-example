@@ -30,11 +30,13 @@ export const tagsSlice = createSlice({
     setActiveDialog: actions.setActiveDialog,
     setActiveIndex: actions.setActiveIndex,
     addTag: actions.addTag,
+    deleteTag: actions.deleteTag,
   },
 });
 
 export const {
   addTag,
+  deleteTag,
   setActiveDialog,
   setActiveIndex,
 } = tagsSlice.actions;

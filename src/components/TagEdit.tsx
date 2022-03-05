@@ -17,11 +17,11 @@ export function TagEdit() {
   }
 
   return (
-    <div className="tag-edit">
-      <strong>
-          Edit: {activeTag.name}
-      </strong>
+    <div className="dialog tag-edit">
       <TagDialogClose />
+      <strong>
+          Edit: {name}
+      </strong>
     </div>
   );
 }

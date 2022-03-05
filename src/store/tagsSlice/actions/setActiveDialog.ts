@@ -10,5 +10,11 @@ export function setActiveDialog(state: Draft<State.Tags.Store>, action: PayloadA
   const { dialog, index } = action.payload;
 
   state.activeDialog = dialog;
-  state.activeIndex = Number(index) > -1 ? 0 : -1;
+
+  if (index) {
+    state.activeIndex = index;
+    return;
+  }
+
+  state.activeIndex = -1;
 }
