@@ -3,12 +3,12 @@ import {
   selectTags,
 } from '@src/store/tagsSlice';
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
-import { addTag } from '@src/store/tagsSlice';
+import { addTag, selectGroupedTags } from '@src/store/tagsSlice';
 import type {
   ChangeEvent,
   FormEventHandler,
 } from 'react';
-
+import { uuid } from '@src/services/uuid';
 import './Tags.css';
 import { TagListItem } from '@src/components/TagListItem';
 import { TagEdit } from '@src/components/TagEdit';
@@ -18,6 +18,7 @@ import { Modal } from '@src/components/Modal';
 export function Tags() {
   const dispatch = useAppDispatch();
   const tags = useAppSelector(selectTags);
+  const groups = useAppSelector(selectGroupedTags);
   const inputRef = useRef<HTMLInputElement>(null);
   const [addNew, setAddNew] = useState('');
 
@@ -51,6 +52,18 @@ export function Tags() {
       <ul className="tags-list">
         {tags.map(({ key, index }) => (
           <TagListItem index={index} key={key} />
+        ))}
+      </ul>
+      <ul className="tag-groups">
+        {Object.entries(groups).map(([key, groupTags]) => (
+          <div key={uuid()}>
+            <h4>{key}</h4>
+            <ul className="tags-list">
+              {groupTags.map(({ index }) => (
+                <TagListItem index={index} key={uuid()} />
+              ))}
+            </ul>
+          </div>
         ))}
       </ul>
       <TagEdit />

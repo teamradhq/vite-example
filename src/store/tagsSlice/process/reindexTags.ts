@@ -18,9 +18,8 @@ import { Draft } from '@reduxjs/toolkit';
  * @param state
  */
 export const reindexTags = (state: Draft<State.Tags.Store>): State.Tags.Store['data'] => {
-  return state.data.map(({ name, key }, index) => ({
-    name,
+  return state.data.map((tag, index) => ({
+    ...tag,
     index,
-    key,
   }));
 };

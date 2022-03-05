@@ -11,6 +11,7 @@ declare namespace Props {
   interface Modal extends Button {
     onCancel?: Button['onClick'],
     onAccept?: Button['onClick'],
+    isOpen?: boolean,
   }
 
   interface TagListItem {
@@ -32,6 +33,8 @@ declare namespace State {
     type Dialog = NullableType<'delete' | 'edit'>;
 
     type Store = {
+      sort: 'name' | 'group',
+      sortDirection: 'asc' | 'desc',
       activeDialog: Dialog,
       activeIndex: number,
       data: Tag[],

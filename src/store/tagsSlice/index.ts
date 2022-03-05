@@ -9,12 +9,14 @@ import {
 } from '@src/store/tagsSlice/process';
 
 const initialState: State.Tags.Store = {
+  sort: 'name',
+  sortDirection: 'asc',
   activeDialog: null,
   activeIndex: -1,
   data: [
-    newTag('First'),
+    newTag('First', 'Order'),
     newTag('Second'),
-    newTag('Third'),
+    newTag('Third', 'Order'),
     newTag('Fourth'),
     newTag('Fifth'),
   ],
@@ -49,4 +51,29 @@ export const selectActiveIndex = (state: RootState) => state.tags.activeIndex;
 export const selectActiveTag = (state: RootState) => (
   state.tags.data[selectActiveIndex(state)] || null
 );
+
+type TagGroups = {
+  [key: string]: State.Tags.Tag[],
+};
+
+/**
+ * Get the tags by their group.
+ *
+ * @param state
+ */
+export const selectGroupedTags = (state: RootState) => {
+  return state.tags.data.reduce((result: TagGroups, current) => {
+    const key = current.group || 'ungrouped';
+    console.log(key, current);
+
+    if (!result[key]) {
+      result[key] = [];
+    }
+
+    result[key].push(current);
+
+    return result;
+  }, {});
+};
+
 export const tagsReducer = tagsSlice.reducer;
