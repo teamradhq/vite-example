@@ -1,7 +1,9 @@
 import { Draft, PayloadAction } from '@reduxjs/toolkit';
 
+import { isIndexValid } from '@src/utils';
+
 /**
- * Update the active dialog or remove it.
+ * Update the active dialog or clear it.
  *
  * @param state
  * @param action
@@ -10,11 +12,5 @@ export function setActiveDialog(state: Draft<State.Tags.Store>, action: PayloadA
   const { dialog, index } = action.payload;
 
   state.activeDialog = dialog;
-
-  if (index) {
-    state.activeIndex = index;
-    return;
-  }
-
-  state.activeIndex = -1;
+  state.activeIndex = isIndexValid(state.data, index) ? index : -1;
 }
