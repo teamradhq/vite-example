@@ -11,6 +11,6 @@ import { isIndexValid } from '@src/utils';
 export function setActiveDialog(state: Draft<State.Tags.Store>, action: PayloadAction<State.Tags.Payload.Dialog>) {
   const { dialog, index } = action.payload;
 
-  state.activeDialog = dialog;
   state.activeIndex = isIndexValid(state.data, index) ? index : -1;
+  state.activeDialog = dialog;
 }

@@ -42,3 +42,8 @@ ol {
   padding: 0.5rem;
   width: 50vw;
 }
+
+label {
+  padding: 0 0.5em;
+  font-weight: bold;
+}

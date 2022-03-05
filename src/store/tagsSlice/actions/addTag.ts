@@ -1,7 +1,9 @@
 import { Draft, PayloadAction } from '@reduxjs/toolkit';
-import { tagExists } from '@src/store/tagsSlice/process/tagExists';
-import { newTag } from '@src/store/tagsSlice/process/newTag';
-import { sortTags } from '@src/store/tagsSlice/process/sortTags';
+import {
+  tagExists,
+  newTag,
+  sortTags,
+} from '@src/store/tagsSlice/process';
 
 /**
  * Validate, then add valid tag to the store.

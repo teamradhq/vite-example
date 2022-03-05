@@ -27,16 +27,18 @@ export const tagsSlice = createSlice({
     data: sortTags(initialState),
   },
   reducers: {
-    setActiveDialog: actions.setActiveDialog,
-    setActiveIndex: actions.setActiveIndex,
     addTag: actions.addTag,
     deleteTag: actions.deleteTag,
+    editTag: actions.editTag,
+    setActiveDialog: actions.setActiveDialog,
+    setActiveIndex: actions.setActiveIndex,
   },
 });
 
 export const {
   addTag,
   deleteTag,
+  editTag,
   setActiveDialog,
   setActiveIndex,
 } = tagsSlice.actions;
