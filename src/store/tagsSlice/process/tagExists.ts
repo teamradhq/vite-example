@@ -19,8 +19,9 @@ export const tagExists = (
 ): boolean => {
 
   return Boolean(
-    state.data.some(isExistingTag(tag))
-    || tag.key
-    || Number(tag.index || -1) > -1,
+    tag.key
+    || tag.index === 0
+    || Number(tag.index) > 0
+    || state.data.some(isExistingTag(tag)),
   );
 };
