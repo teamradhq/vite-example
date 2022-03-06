@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 
-type DefineKeyOptions = {
+export type DefineKeyOptions = {
   prefix?: string,
   suffix?: string,
 }
