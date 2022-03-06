@@ -1,5 +1,6 @@
-
 type NullableType<T> = T | null | undefined;
+
+type Spaceship = -1 | 0 | 1;
 
 declare namespace Props {
   interface Button {
