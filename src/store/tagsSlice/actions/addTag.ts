@@ -21,9 +21,11 @@ export function addTag(state: Draft<State.Tags.Store>, action: PayloadAction<Sta
   const tag = action.payload;
 
   if (!tag.name || tagExists(state, tag)) {
-    return;
+    return state;
   }
 
   state.data.push(newTag(tag.name));
   state.data = sortTags(state);
+
+  return state;
 }
