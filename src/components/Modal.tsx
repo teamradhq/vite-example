@@ -9,8 +9,9 @@ export const Modal: FC<Props.Modal> = ({
   // text,
   // type,
   children,
+  isOpen,
 }: PropsWithChildren<Props.Modal>) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(Boolean(isOpen));
 
   const onClick = (isOpen: boolean) => () => {
     setIsModalOpen(isOpen);
