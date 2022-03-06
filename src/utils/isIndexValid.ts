@@ -6,7 +6,8 @@
  */
 export function isIndexValid(array: unknown[], index?: number): index is number {
   return (
-    typeof index === 'number'
+    array.length > 0
+    && typeof index === 'number'
     && index >= 0
     && index < array.length
   );

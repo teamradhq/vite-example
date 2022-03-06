@@ -64,7 +64,6 @@ type TagGroups = {
 export const selectGroupedTags = (state: RootState) => {
   return state.tags.data.reduce((result: TagGroups, current) => {
     const key = current.group || 'ungrouped';
-    console.log(key, current);
 
     if (!result[key]) {
       result[key] = [];
