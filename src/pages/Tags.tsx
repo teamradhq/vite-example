@@ -50,7 +50,7 @@ export function Tags() {
     <div className="page page-tags">
       <h3>Tags</h3>
       <form onSubmit={onSubmit}>
-        <Input
+        <input type="text"
            value={addNew}
            onChange={onChange}
            ref={inputRef}
