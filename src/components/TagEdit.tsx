@@ -16,7 +16,9 @@ export function TagEdit() {
   const dispatch = useAppDispatch();
   const activeDialog = useAppSelector(selectActiveDialog);
   const activeTag = useAppSelector(selectActiveTag);
-  const [value, setValue] = useState(activeTag?.name || '');
+  const [values, setValues] = useState({
+    name: activeTag?.name || '',
+  });
 
   if (activeDialog !== 'edit' || !activeTag) {
     return null;
@@ -36,18 +38,22 @@ export function TagEdit() {
       return;
     }
 
-    setValue(value);
+    setValues({
+      name: value,
+    });
   };
 
   /* Reset input value to stored tag name on exit. */
   const cancelTag = () => {
-    setValue(activeTag.name);
+    setValues({
+      name: activeTag.name,
+    });
   };
 
   const saveTag = () => {
     dispatch(editTag({
       ...activeTag,
-      name: value,
+      ...values,
     }));
   };
 
@@ -65,7 +71,7 @@ export function TagEdit() {
           id={inputName}
           name={inputName}
           onChange={onChange}
-          value={value||activeTag.name}
+          value={values.name || activeTag.name}
         />
       </div>
       <div>

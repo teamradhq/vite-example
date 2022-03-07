@@ -54,6 +54,11 @@ export function Tags() {
           <TagListItem index={index} key={key} />
         ))}
       </ul>
+      <TagEdit />
+      <TagDelete />
+      <Modal text="Awesome" >
+        <h1>This is some Content</h1>
+      </Modal>
       <ul className="tag-groups">
         {Object.entries(groups).map(([key, groupTags]) => (
           <div key={uuid()}>
@@ -66,11 +71,6 @@ export function Tags() {
           </div>
         ))}
       </ul>
-      <TagEdit />
-      <TagDelete />
-      <Modal text="Awesome" >
-        <h1>This is some Content</h1>
-      </Modal>
     </div>
   );
 }
