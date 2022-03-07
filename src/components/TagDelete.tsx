@@ -7,7 +7,7 @@ import {
 } from '@src/store/tagsSlice';
 
 import { TagDialogClose } from '@src/components/TagDialogClose';
-import { Button } from '@src/components/Button';
+import { Button } from '@src/components/Ui/Button';
 import {
   selectActiveDialog,
   selectActiveTag,

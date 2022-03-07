@@ -5,7 +5,7 @@ import {
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
 import { increment, decrement } from '@src/store/counterSlice';
 import { selectCounter } from '@src/store/selectors';
-import { Button } from '@src/components/Button';
+import { Button } from '@src/components/Ui/Button';
 
 import './Counter.css';
 

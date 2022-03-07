@@ -1,16 +1,16 @@
 import type { FC } from 'react';
 import { PropsWithChildren, useState } from 'react';
 
-import { Button } from '@src/components/Button';
+import { Button } from '@src/components/Ui/Button';
 
 import './Modal.css';
 
-export const Modal: FC<Props.Modal> = ({
+export const Modal: FC<Props.Ui.Modal> = ({
   // text,
   // type,
   children,
   isOpen,
-}: PropsWithChildren<Props.Modal>) => {
+}: PropsWithChildren<Props.Ui.Modal>) => {
   const [isModalOpen, setIsModalOpen] = useState(Boolean(isOpen));
 
   const onClick = (isOpen: boolean) => () => {

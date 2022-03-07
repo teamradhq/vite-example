@@ -5,7 +5,7 @@ import {
 import {
   setActiveDialog,
 } from '@src/store/tagsSlice';
-import { Button } from '@src/components/Button';
+import { Button } from '@src/components/Ui/Button';
 import { selectTags } from '@src/store/tagsSlice/selectors';
 
 

@@ -4,20 +4,20 @@ import {
   fireEvent as user,
 } from '@testing-library/react';
 
-import { Button } from '@src/components/Button';
+import { Button } from '@src/components/Ui/Button';
 
 const defaultProps = {
   text: 'Test Button',
 };
 
-const renderButton = (props?: Partial<Props.Button>) => {
+const renderButton = (props?: Partial<Props.Ui.Button>) => {
   return render(<Button {...{
     ...defaultProps,
     ...props,
   }} />);
 };
 
-describe('components.button', () => {
+describe('components.Ui.Button', () => {
   it('should render a button with text', async () => {
     expect.assertions(1);
 

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import './Button.css';
 
-export const Button: FC<Props.Button> = ({
+export const Button: FC<Props.Ui.Button> = ({
   onClick,
   text,
   type,
-}: Props.Button) => {
+}: Props.Ui.Button) => {
   if (onClick) {
     return (
       <button

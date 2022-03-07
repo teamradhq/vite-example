@@ -17,7 +17,7 @@ import './Tags.css';
 import { TagListItem } from '@src/components/TagListItem';
 import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
-import { Modal } from '@src/components/Modal';
+import { Modal } from '@src/components/Ui/Modal';
 
 export function Tags() {
   const dispatch = useAppDispatch();
