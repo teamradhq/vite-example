@@ -1,0 +1,30 @@
+.tag-label {
+  font-weight: bold;
+  flex: auto auto 0;
+  min-width: 7.5em;
+}
+
+.tag-list-item {
+  background-color: #555;
+  display: flex;
+  padding: 0.25rem 0.5rem;
+
+  &:nth-of-type(2n) {
+    background-color: #444;
+  }
+
+  > * {
+    margin: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.tag-actions {
+  display: flex;
+  justify-content: center;
+
+  > * {
+    margin: 0.25rem;
+  }
+}

@@ -4,6 +4,8 @@ import { selectTags } from '@src/store/tagsSlice/selectors';
 
 import { Button } from '@src/components/Ui';
 
+import './ListItem.css';
+
 export function ListItem({ index }: Props.Tags.ListItem) {
   const dispatch = useAppDispatch();
 
@@ -25,9 +27,9 @@ export function ListItem({ index }: Props.Tags.ListItem) {
 
   return (
     <li className="tag-list-item">
-            <span className="tag-label">
-              {index} :: {name}
-            </span>
+      <span className="tag-label">
+        {index} :: {name}
+      </span>
       <ul className="tag-actions">
         <li>
           <Button text={'Edit'} onClick={openEditDialog}/>
