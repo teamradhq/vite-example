@@ -14,15 +14,12 @@ const defaultProps = {
   value: 'some-value',
 };
 
-const renderInput = (props = {}) => {
-  return render(<Input {...{
+const setup = async (props= {}) => {
+  const utils = render(<Input {...{
     ...defaultProps,
     ...props,
   }} />);
-};
 
-const setup = async (props= {}) => {
-  const utils = renderInput(props);
   const input = await utils.findByTestId('ui-input');
 
   return {
