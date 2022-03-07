@@ -3,7 +3,7 @@ import {
   selectTags,
 } from '@src/store/tagsSlice';
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
-import { addTag, selectGroupedTags } from '@src/store/tagsSlice';
+import { addTag } from '@src/store/tagsSlice';
 import type {
   ChangeEvent,
   FormEventHandler,
@@ -14,6 +14,9 @@ import { TagListItem } from '@src/components/TagListItem';
 import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
 import { Modal } from '@src/components/Modal';
+import {
+  selectGroupedTags,
+} from '@src/store/tagsSlice/selectors';
 
 export function Tags() {
   const dispatch = useAppDispatch();

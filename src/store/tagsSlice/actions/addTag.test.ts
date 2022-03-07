@@ -1,4 +1,5 @@
 import { addTag } from '@src/store/tagsSlice/actions/addTag';
+// eslint-disable-next-line jest/no-mocks-import
 import { newStore } from '@src/__mocks__/tagStore.mock';
 
 import {
@@ -6,7 +7,6 @@ import {
   newTag,
   sortTags,
 } from '@src/store/tagsSlice/process';
-import exp from 'constants';
 
 jest.mock('@src/store/tagsSlice/process');
 

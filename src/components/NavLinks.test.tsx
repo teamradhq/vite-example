@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 
 import {
   render,
@@ -8,7 +7,7 @@ import {
 
 import { NavLinks } from '@src/components/NavLinks';
 
-const renderButton = (history: ReturnType<typeof createMemoryHistory>) => {
+const renderButton = () => {
   return render(
     <BrowserRouter>
       <NavLinks />
@@ -26,10 +25,8 @@ const renderButton = (history: ReturnType<typeof createMemoryHistory>) => {
 describe('components.NavLinks', () => {
   it('should render the component', async () => {
     expect.assertions(1);
-    const history = createMemoryHistory();
-    history.push('/');
 
-    const result = await renderButton(history).findByText('Home');
+    const result = await renderButton().findByText('Home');
 
     expect(result).toHaveTextContent('Home');
   });
