@@ -14,7 +14,7 @@ import {
 
 import './Tags.css';
 
-import { TagListItem } from '@src/components/TagListItem';
+import { TagList } from '@src/components/TagList';
 import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
 import {
@@ -55,30 +55,21 @@ export function Tags() {
            onChange={onChange}
            ref={inputRef}
         />
-
       </form>
-      <ul className="tags-list">
-        {tags.map(({ key, index }) => (
-          <TagListItem index={index} key={key} />
-        ))}
-      </ul>
+      <TagList tags={tags} />
       <TagEdit />
       <TagDelete />
-      <Modal text="Awesome" >
-        <h1>This is some Content</h1>
-      </Modal>
       <ul className="tag-groups">
         {groups.map(([key, groupTags]) => (
           <div key={uuid()}>
             <h4>{key}</h4>
-            <ul className="tags-list">
-              {groupTags.map(({ index }) => (
-                <TagListItem index={index} key={uuid()} />
-              ))}
-            </ul>
+            <TagList tags={groupTags} />
           </div>
         ))}
       </ul>
+      <Modal text="Awesome" >
+        <h1>This is some Content</h1>
+      </Modal>
     </div>
   );
 }
