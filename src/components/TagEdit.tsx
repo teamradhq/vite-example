@@ -4,13 +4,14 @@ import {
 } from '@src/store/hooks';
 import {
   editTag,
-  selectActiveDialog,
-  selectActiveTag,
+
+
 } from '@src/store/tagsSlice';
 
 import { TagDialogClose } from '@src/components/TagDialogClose';
 import { Button } from '@src/components/Button';
 import { ChangeEventHandler, useState } from 'react';
+import { selectActiveDialog, selectActiveTag } from '@src/store/tagsSlice/selectors';
 
 export function TagEdit() {
   const dispatch = useAppDispatch();

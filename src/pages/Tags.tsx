@@ -1,7 +1,4 @@
 import { useState, useRef } from 'react';
-import {
-  selectTags,
-} from '@src/store/tagsSlice';
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
 import { addTag } from '@src/store/tagsSlice';
 import type {
@@ -15,7 +12,7 @@ import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
 import { Modal } from '@src/components/Modal';
 import {
-  selectGroupedTags,
+  selectGroupedTags, selectTags,
 } from '@src/store/tagsSlice/selectors';
 
 export function Tags() {

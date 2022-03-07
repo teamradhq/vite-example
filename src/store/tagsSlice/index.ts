@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import type { RootState } from '@src/store';
 import * as actions from '@src/store/tagsSlice/actions';
 
 import { newTag, sortTags } from '@src/store/tagsSlice/process';
@@ -44,12 +42,5 @@ export const {
   setActiveDialog,
   setActiveIndex,
 } = tagsSlice.actions;
-
-export const selectTags = (state: RootState) => state.tags.data;
-export const selectActiveDialog = (state: RootState) => state.tags.activeDialog;
-export const selectActiveIndex = (state: RootState) => state.tags.activeIndex;
-export const selectActiveTag = (state: RootState) => (
-  state.tags.data[selectActiveIndex(state)] || null
-);
 
 export const tagsReducer = tagsSlice.reducer;

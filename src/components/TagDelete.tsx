@@ -3,13 +3,12 @@ import {
   useAppDispatch,
 } from '@src/store/hooks';
 import {
-  selectActiveDialog,
-  selectActiveTag,
   deleteTag,
 } from '@src/store/tagsSlice';
 
 import { TagDialogClose } from '@src/components/TagDialogClose';
 import { Button } from '@src/components/Button';
+import { selectActiveDialog, selectActiveTag } from '@src/store/tagsSlice/selectors';
 
 export function TagDelete() {
   const dispatch = useAppDispatch();

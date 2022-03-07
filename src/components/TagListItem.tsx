@@ -3,10 +3,10 @@ import {
   useAppDispatch,
 } from '@src/store/hooks';
 import {
-  selectTags,
   setActiveDialog,
 } from '@src/store/tagsSlice';
 import { Button } from '@src/components/Button';
+import { selectTags } from '@src/store/tagsSlice/selectors';
 
 
 export function TagListItem({ index }: Props.TagListItem) {
