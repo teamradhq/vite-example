@@ -50,11 +50,12 @@ export function Tags() {
     <div className="page page-tags">
       <h3>Tags</h3>
       <form onSubmit={onSubmit}>
-        <input type="text"
+        <Input
            value={addNew}
            onChange={onChange}
            ref={inputRef}
         />
+
       </form>
       <ul className="tags-list">
         {tags.map(({ key, index }) => (
