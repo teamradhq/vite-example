@@ -4,12 +4,13 @@ import {
 } from '@src/store/hooks';
 import {
   editTag,
-
-
 } from '@src/store/tagsSlice';
+
 
 import { TagDialogClose } from '@src/components/TagDialogClose';
 import { Button } from '@src/components/Ui/Button';
+import { Input } from '@src/components/Ui/Input';
+
 import { ChangeEventHandler, useState } from 'react';
 import {
   selectActiveDialog,
@@ -71,11 +72,10 @@ export function TagEdit() {
       </strong>
       <div>
         <label htmlFor={inputName}>Name</label>
-        <input
-          id={inputName}
+        <Input
           name={inputName}
-          onChange={onChange}
           value={values.name || activeTag.name}
+          onChange={onChange}
         />
       </div>
       <div>

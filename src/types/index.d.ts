@@ -1,20 +1,34 @@
+
 type NullableType<T> = T | null | undefined;
 
 type Spaceship = -1 | 0 | 1;
+
+type ChangeEventHandler<Element> = React.ChangeEventHandler<Element>;
+type MouseEventHandler<Element> = React.MouseEventHandler<Element>;
 
 declare namespace Props {
   namespace Ui {
     interface Button {
       text: string,
       type?: 'button' | 'submit',
-      onClick?: React.MouseEventHandler<HTMLButtonElement>,
+      onClick?: MouseEventHandler<HTMLButtonElement>,
     }
 
     interface Modal extends Button {
-      onCancel?: Button['onClick'],
-      onAccept?: Button['onClick'],
+      onCancel?: Modal['onClick'],
+      onAccept?: Modal['onClick'],
       isOpen?: boolean,
     }
+
+    interface IFormElement<Element, Value = string> {
+      label?: string,
+      name?: string,
+      id?: string,
+      value: Value,
+      onChange?: ChangeEventHandler<Element>,
+    }
+
+    type Input<Value = string> = IFormElement<HTMLInputElement, Value>
   }
 
   interface TagListItem {

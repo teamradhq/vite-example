@@ -17,7 +17,10 @@ import './Tags.css';
 import { TagListItem } from '@src/components/TagListItem';
 import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
-import { Modal } from '@src/components/Ui/Modal';
+import {
+  Input,
+  Modal,
+} from '@src/components/Ui';
 
 export function Tags() {
   const dispatch = useAppDispatch();
@@ -47,7 +50,7 @@ export function Tags() {
     <div className="page page-tags">
       <h3>Tags</h3>
       <form onSubmit={onSubmit}>
-        <input type="text"
+        <Input
            value={addNew}
            onChange={onChange}
            ref={inputRef}
