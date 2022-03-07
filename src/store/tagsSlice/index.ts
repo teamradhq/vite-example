@@ -8,6 +8,8 @@ import {
   sortTags,
 } from '@src/store/tagsSlice/process';
 
+const DEFAULT_GROUP = 'Ungrouped';
+
 const initialState: State.Tags.Store = {
   sort: 'name',
   sortDirection: 'asc',
@@ -17,8 +19,11 @@ const initialState: State.Tags.Store = {
     newTag('First', 'Order'),
     newTag('Second'),
     newTag('Third', 'Order'),
+    newTag('Random', 'Vibes'),
+    newTag('Cool', 'Vibes'),
     newTag('Fourth'),
     newTag('Fifth'),
+    newTag('Edgy', 'Vibes'),
   ],
 };
 
@@ -62,8 +67,9 @@ type TagGroups = {
  * @param state
  */
 export const selectGroupedTags = (state: RootState) => {
-  return state.tags.data.reduce((result: TagGroups, current) => {
-    const key = current.group || 'ungrouped';
+  /** Reduce tags to TagGroups object. */
+  const groups = state.tags.data.reduce((result: TagGroups, current) => {
+    const key = current.group || DEFAULT_GROUP;
 
     if (!result[key]) {
       result[key] = [];
@@ -73,6 +79,23 @@ export const selectGroupedTags = (state: RootState) => {
 
     return result;
   }, {});
+
+  /** Generate map with unsorted group at the top. */
+  const map = new Map([[DEFAULT_GROUP, [] as State.Tags.Tag[]]]);
+  for (const key of Object.keys(groups).sort()) {
+    map.set(key, groups[key]);
+  }
+
+  /** Generate array of sorted group entries. */
+  const sorted: [
+    keyof typeof groups,
+    State.Tags.Tag[]
+  ][] = [];
+  for (const [key, value] of map.entries()) {
+    sorted.push([key, value]);
+  }
+
+  return sorted;
 };
 
 export const tagsReducer = tagsSlice.reducer;

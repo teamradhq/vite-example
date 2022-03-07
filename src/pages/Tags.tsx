@@ -60,7 +60,7 @@ export function Tags() {
         <h1>This is some Content</h1>
       </Modal>
       <ul className="tag-groups">
-        {Object.entries(groups).map(([key, groupTags]) => (
+        {groups.map(([key, groupTags]) => (
           <div key={uuid()}>
             <h4>{key}</h4>
             <ul className="tags-list">
