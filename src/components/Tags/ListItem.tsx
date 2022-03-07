@@ -1,15 +1,10 @@
-import {
-  useAppSelector,
-  useAppDispatch,
-} from '@src/store/hooks';
-import {
-  setActiveDialog,
-} from '@src/store/tagsSlice';
-import { Button } from '@src/components/Ui/Button';
+import { useAppSelector, useAppDispatch } from '@src/store/hooks';
+import { setActiveDialog } from '@src/store/tagsSlice';
 import { selectTags } from '@src/store/tagsSlice/selectors';
 
+import { Button } from '@src/components/Ui';
 
-export function TagListItem({ index }: Props.TagListItem) {
+export function ListItem({ index }: Props.Tags.ListItem) {
   const dispatch = useAppDispatch();
 
   const { name } = useAppSelector(selectTags)[index];

@@ -12,15 +12,10 @@ import {
   selectTags,
 } from '@src/store/tagsSlice/selectors';
 
-import './Tags.css';
+import { List, EditForm, DeleteForm } from '@src/components/Tags';
+import { Input, Modal } from '@src/components/Ui';
 
-import { TagList } from '@src/components/TagList';
-import { TagEdit } from '@src/components/TagEdit';
-import { TagDelete } from '@src/components/TagDelete';
-import {
-  Input,
-  Modal,
-} from '@src/components/Ui';
+import './Tags.css';
 
 export function Tags() {
   const dispatch = useAppDispatch();
@@ -56,14 +51,14 @@ export function Tags() {
            ref={inputRef}
         />
       </form>
-      <TagList tags={tags} />
-      <TagEdit />
-      <TagDelete />
+      <List tags={tags} />
+      <EditForm />
+      <DeleteForm />
       <ul className="tag-groups">
         {groups.map(([key, groupTags]) => (
           <div key={uuid()}>
             <h4>{key}</h4>
-            <TagList tags={groupTags} />
+            <List tags={groupTags} />
           </div>
         ))}
       </ul>

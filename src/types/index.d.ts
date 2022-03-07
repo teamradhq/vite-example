@@ -31,8 +31,14 @@ declare namespace Props {
     type Input<Value = string> = IFormElement<HTMLInputElement, Value>
   }
 
-  interface TagListItem {
-    index: number;
+  namespace Tags {
+    interface List {
+      tags?: State.Tags.Tag[],
+    }
+
+    interface ListItem {
+      index: number;
+    }
   }
 }
 

@@ -1,19 +1,14 @@
-import {
-  useAppSelector,
-  useAppDispatch,
-} from '@src/store/hooks';
-import {
-  deleteTag,
-} from '@src/store/tagsSlice';
-
-import { TagDialogClose } from '@src/components/TagDialogClose';
-import { Button } from '@src/components/Ui/Button';
+import { useAppSelector, useAppDispatch } from '@src/store/hooks';
+import { deleteTag } from '@src/store/tagsSlice';
 import {
   selectActiveDialog,
   selectActiveTag,
 } from '@src/store/tagsSlice/selectors';
 
-export function TagDelete() {
+import { Button } from '@src/components/Ui/Button';
+import { CloseDialog } from '@src/components/Tags/CloseDialog';
+
+export function DeleteForm() {
   const dispatch = useAppDispatch();
 
   const activeDialog = useAppSelector(selectActiveDialog);
@@ -30,7 +25,7 @@ export function TagDelete() {
   const { name } = activeTag;
   return (
     <div className="dialog tag-delete">
-      <TagDialogClose />
+      <CloseDialog />
       <div>
         <h4>Warning!</h4>
         <p>You are about to delete the tag <strong>{name}</strong>!</p>
@@ -38,7 +33,7 @@ export function TagDelete() {
       </div>
       <div>
         <Button text="Ok" onClick={onClick} />
-        <TagDialogClose text="Cancel" />
+        <CloseDialog text="Cancel" />
       </div>
     </div>
   );

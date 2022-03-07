@@ -1,23 +1,21 @@
 import {
-  useAppSelector,
-  useAppDispatch,
-} from '@src/store/hooks';
-import {
-  editTag,
-} from '@src/store/tagsSlice';
+  ChangeEventHandler,
+  useState,
+} from 'react';
 
-
-import { TagDialogClose } from '@src/components/TagDialogClose';
-import { Button } from '@src/components/Ui/Button';
-import { Input } from '@src/components/Ui/Input';
-
-import { ChangeEventHandler, useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@src/store/hooks';
+import { editTag } from '@src/store/tagsSlice';
 import {
   selectActiveDialog,
   selectActiveTag,
 } from '@src/store/tagsSlice/selectors';
+import {
+  Button,
+  Input,
+} from '@src/components/Ui';
+import { CloseDialog } from '@src/components/Tags/CloseDialog';
 
-export function TagEdit() {
+export function EditForm() {
   const dispatch = useAppDispatch();
   const activeDialog = useAppSelector(selectActiveDialog);
   const activeTag = useAppSelector(selectActiveTag);
@@ -66,7 +64,7 @@ export function TagEdit() {
 
   return (
     <div className="dialog tag-edit">
-      <TagDialogClose text={'X'} onClick={cancelTag} />
+      <CloseDialog text={'X'} onClick={cancelTag} />
       <strong>
           Edit: {name}
       </strong>
@@ -79,7 +77,7 @@ export function TagEdit() {
         />
       </div>
       <div>
-        <TagDialogClose text={'Cancel'} onClick={cancelTag} />
+        <CloseDialog text={'Cancel'} onClick={cancelTag} />
         <Button text={'Save'} onClick={saveTag} />
       </div>
     </div>
