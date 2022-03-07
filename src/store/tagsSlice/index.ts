@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as actions from '@src/store/tagsSlice/actions';
 
-import { newTag, sortTags } from '@src/store/tagsSlice/process';
+import * as actions from '@src/store/tagsSlice/actions';
+import {
+  newTag,
+  sortTags,
+} from '@src/store/tagsSlice/process';
 
 const initialState: State.Tags.Store = {
   sort: 'name',

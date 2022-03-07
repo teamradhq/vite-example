@@ -8,7 +8,10 @@ import {
 
 import { TagDialogClose } from '@src/components/TagDialogClose';
 import { Button } from '@src/components/Button';
-import { selectActiveDialog, selectActiveTag } from '@src/store/tagsSlice/selectors';
+import {
+  selectActiveDialog,
+  selectActiveTag,
+} from '@src/store/tagsSlice/selectors';
 
 export function TagDelete() {
   const dispatch = useAppDispatch();

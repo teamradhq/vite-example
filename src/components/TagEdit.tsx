@@ -11,7 +11,10 @@ import {
 import { TagDialogClose } from '@src/components/TagDialogClose';
 import { Button } from '@src/components/Button';
 import { ChangeEventHandler, useState } from 'react';
-import { selectActiveDialog, selectActiveTag } from '@src/store/tagsSlice/selectors';
+import {
+  selectActiveDialog,
+  selectActiveTag,
+} from '@src/store/tagsSlice/selectors';
 
 export function TagEdit() {
   const dispatch = useAppDispatch();
