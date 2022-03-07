@@ -1,19 +1,23 @@
 import { useState, useRef } from 'react';
-import { useAppSelector, useAppDispatch } from '@src/store/hooks';
-import { addTag } from '@src/store/tagsSlice';
 import type {
   ChangeEvent,
   FormEventHandler,
 } from 'react';
 import { uuid } from '@src/services/uuid';
+
+import { useAppSelector, useAppDispatch } from '@src/store/hooks';
+import { addTag } from '@src/store/tagsSlice';
+import {
+  selectGroupedTags,
+  selectTags,
+} from '@src/store/tagsSlice/selectors';
+
 import './Tags.css';
+
 import { TagListItem } from '@src/components/TagListItem';
 import { TagEdit } from '@src/components/TagEdit';
 import { TagDelete } from '@src/components/TagDelete';
 import { Modal } from '@src/components/Modal';
-import {
-  selectGroupedTags, selectTags,
-} from '@src/store/tagsSlice/selectors';
 
 export function Tags() {
   const dispatch = useAppDispatch();
