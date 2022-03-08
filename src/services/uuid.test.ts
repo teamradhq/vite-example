@@ -23,15 +23,14 @@ describe('services.uuid', () => {
   const cases: [
     string,
     Partial<PrefixOptions>,
-    string
   ][] = [
-    ['pass through', {}, 'called'],
-    ['prefix', { prefix: 'prefix' }, 'prefix-called'],
-    ['suffix', { suffix: 'suffix' }, 'called-suffix'],
-    ['prefix & suffix', { prefix: 'prefix',  suffix: 'suffix' }, 'prefix-called-suffix'],
+    ['pass through', {}],
+    ['prefix', { prefix: 'prefix' }],
+    ['suffix', { suffix: 'suffix' }],
+    ['prefix & suffix', { prefix: 'prefix',  suffix: 'suffix' }],
   ];
 
-  it.each(cases)('should %s uuid string', (_, input, expected) => {
+  it.each(cases)('should %s uuid string', (_, input) => {
     expect.assertions(1);
 
     uuid(input);
