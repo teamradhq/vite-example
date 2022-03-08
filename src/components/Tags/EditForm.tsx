@@ -67,8 +67,6 @@ export function EditForm() {
       name: values.name || activeTag.name,
       group: values.group || activeTag.group,
     }));
-
-    cancelTag();
   };
 
   const inputNames = {
