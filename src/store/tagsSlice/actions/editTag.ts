@@ -1,9 +1,10 @@
 import { Draft, PayloadAction } from '@reduxjs/toolkit';
-import {
-  tagExists,
-  sortTags,
-} from '@src/store/tagsSlice/process';
 import { isIndexValid } from '@src/utils';
+import {
+  isTagEdited,
+  sortTags,
+  tagExists,
+} from '@src/store/tagsSlice/process';
 
 /**
  * Delete supplied tag from the store
@@ -16,7 +17,10 @@ export function editTag(state: Draft<State.Tags.Store>, action: PayloadAction<St
   const { index } = tag;
   const previous = state.data[index];
 
-  if (tagExists(state, action.payload) && tag.name === previous.name) {
+  if (
+    tagExists(state, action.payload)
+    && !isTagEdited(previous, tag)
+  ) {
     return;
   }
 

@@ -1,6 +1,5 @@
 import { RootState } from '@src/store';
-
-const DEFAULT_GROUP = 'Ungrouped';
+import { DEFAULT_GROUP } from '@src/constants';
 
 type TagGroups = {
   [key: string]: State.Tags.Tag[],
