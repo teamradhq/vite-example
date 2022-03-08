@@ -6,6 +6,12 @@ type Spaceship = -1 | 0 | 1;
 type ChangeEventHandler<Element> = React.ChangeEventHandler<Element>;
 type MouseEventHandler<Element> = React.MouseEventHandler<Element>;
 
+interface PrefixOptions {
+  prefix?: string,
+  suffix?: string,
+  value: string,
+}
+
 interface PageEntry {
   path: string,
   title: string,

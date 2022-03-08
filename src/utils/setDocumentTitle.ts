@@ -1,5 +1,16 @@
-export function setDocumentTitle(prefix?: string) {
-  const title = String(process.env.APP_TITLE);
+import { prefixSuffix } from '@src/utils/prefixSuffix';
 
-  document.title = (prefix ? `${prefix} | ${title}` : title);
+/**
+ * Set document title to the app name and add prefix.
+ *
+ * @param prefix
+ */
+export function setDocumentTitle(prefix?: string) {
+  const value = String(process.env.APP_TITLE);
+  const isHome = prefix?.toLowerCase().trim() === 'home';
+
+  document.title = (!isHome && prefix
+      ? prefixSuffix({ prefix, value }, ' | ')
+      : value
+  );
 }
