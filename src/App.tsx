@@ -9,6 +9,7 @@ import { Counter } from '@src/pages/Counter';
 import { Tags } from '@src/pages/Tags';
 
 import './App.css';
+import { FC } from 'react';
 
 const pageKey = () => uuid({ prefix: 'page' });
 
@@ -38,6 +39,18 @@ const pages: PageEntry[] = [
 ];
 
 function App() {
+  const routes = pages.map(({
+    path,
+    title,
+    key,
+    Component,
+  }) => (
+    <Route
+      key={`route-${key}`}
+      path={path}
+      element={Component ? <Component /> : <>{title} View (No Component)</>}
+    />
+  ));
 
   return (
     <Provider store={store}>
@@ -47,9 +60,7 @@ function App() {
         </header>
         <NavLinks pages={pages} />
         <Routes>
-          {pages.map(({ path, title, key, Component }) => (
-            <Route key={`route-${key}`} path={path} element={Component ? <Component /> : <>{title}</>} />
-          ))}
+          {routes}
         </Routes>
       </div>
     </Provider>
