@@ -3,6 +3,7 @@ import {
   useState,
 } from 'react';
 
+import { DEFAULT_GROUP } from '@src/constants';
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
 import { editTag } from '@src/store/tagsSlice';
 import {
@@ -21,20 +22,25 @@ export function EditForm() {
   const activeTag = useAppSelector(selectActiveTag);
   const [values, setValues] = useState({
     name: activeTag?.name || '',
+    group: activeTag?.group || '',
   });
 
   if (activeDialog !== 'edit' || !activeTag) {
     return null;
   }
 
+
+  type ChangeFunction = (key: keyof typeof values) => (
+    ChangeEventHandler<HTMLInputElement>
+  );
   /**
    * When form input changes, we update its value unless the
    * new value is empty. This is because an empty value will
    * be substituted for the previous tag name.
    *
-   * @param e
+   * @param key
    */
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const onChange: ChangeFunction = (key) => (e) => {
     const { value } = e.currentTarget;
 
     if (value.length < 1) {
@@ -42,7 +48,8 @@ export function EditForm() {
     }
 
     setValues({
-      name: value,
+      ...values,
+      [key]: value,
     });
   };
 
@@ -50,17 +57,24 @@ export function EditForm() {
   const cancelTag = () => {
     setValues({
       name: activeTag.name,
+      group: values.group,
     });
   };
 
   const saveTag = () => {
     dispatch(editTag({
       ...activeTag,
-      ...values,
+      name: values.name || activeTag.name,
+      group: values.group || activeTag.group,
     }));
+
+    cancelTag();
   };
 
-  const inputName = `${activeTag.key}-input`;
+  const inputNames = {
+    name: `${activeTag.key}-name`,
+    group:  `${activeTag.key}-group`,
+  };
 
   return (
     <div className="dialog tag-edit">
@@ -69,11 +83,19 @@ export function EditForm() {
           Edit: {name}
       </strong>
       <div>
-        <label htmlFor={inputName}>Name</label>
+        <label htmlFor={inputNames.name}>Name</label>
         <Input
-          name={inputName}
+          name={inputNames.name}
           value={values.name || activeTag.name}
-          onChange={onChange}
+          onChange={onChange('name')}
+        />
+      </div>
+      <div>
+        <label htmlFor={inputNames.group}>Group</label>
+        <Input
+          name={inputNames.group}
+          value={values.group || activeTag.group || DEFAULT_GROUP}
+          onChange={onChange('group')}
         />
       </div>
       <div>

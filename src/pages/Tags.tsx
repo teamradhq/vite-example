@@ -52,13 +52,14 @@ export function Tags() {
           ref={inputRef}
         />
       </form>
+      <h4>All <span>({tags.length})</span></h4>
       <List tags={tags} />
       <EditForm />
       <DeleteForm />
       <ul className="tag-groups">
         {groups.map(([key, groupTags]) => (
           <div key={uuid()}>
-            <h4>{key}</h4>
+            <h4>{key} <span>({groupTags.length})</span></h4>
             <List tags={groupTags} />
           </div>
         ))}
