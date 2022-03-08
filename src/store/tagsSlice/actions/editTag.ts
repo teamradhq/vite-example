@@ -19,7 +19,7 @@ export function editTag(state: Draft<State.Tags.Store>, action: PayloadAction<St
 
   if (
     tagExists(state, action.payload)
-    && !isTagEdited(previous, tag)
+    || !isTagEdited(previous, tag)
   ) {
     return;
   }
