@@ -13,7 +13,13 @@ export const Page: FC<Props.Page> = function Page(props) {
 
   setDocumentTitle(title);
 
-  return <section role="contentinfo" aria-label={title} className={`page page-${slug}`}>
-    {children}
-  </section>;
+  return (
+    <section
+      role="contentinfo"
+      aria-label={title}
+      className={`page page-${slug}`}
+    >
+      {children}
+    </section>
+  );
 };

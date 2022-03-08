@@ -12,7 +12,10 @@ import {
  * @param state
  * @param action
  */
-export function editTag(state: Draft<State.Tags.Store>, action: PayloadAction<State.Tags.Tag>) {
+export function editTag(
+  state: Draft<State.Tags.Store>,
+  action: PayloadAction<State.Tags.Tag>,
+) {
   const tag = action.payload;
   const { index } = tag;
   const previous = state.data[index];
