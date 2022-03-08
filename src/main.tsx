@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+import { setDocumentTitle } from '@src/utils/setDocumentTitle';
+
 import './index.css';
 import App from './App';
+
+setDocumentTitle();
 
 ReactDOM.render(
   <React.StrictMode>

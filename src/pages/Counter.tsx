@@ -24,7 +24,7 @@ export function Counter() {
   const dispatch = useAppDispatch();
 
   return (
-    <Page slug="counter">
+    <Page title="Counter" slug="counter">
       <h2>Counter</h2>
       <DisplayCount count={count} />
       <p className="increment">

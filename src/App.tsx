@@ -5,9 +5,10 @@ import { uuid } from '@src/services/uuid';
 import { store } from '@src/store';
 
 import { NavLinks } from '@src/components/NavLinks';
-import { Counter, Tabs, Tags } from '@src/pages';
+import { Counter, Tabs, Tags, Page } from '@src/pages';
 
 import './App.css';
+import { FC } from 'react';
 
 const pageKey = () => uuid({ prefix: 'page' });
 
@@ -42,6 +43,29 @@ const pages: PageEntry[] = [
   },
 ];
 
+/**
+ * Render Component if page entry has one, or create a placeholder page.
+ *
+ * @param title
+ * @param path
+ * @param Component
+ * @constructor
+ */
+const ComponentOrPage: FC<PageEntry> = function ComponentOrPage({
+  title,
+  path,
+  Component,
+}) {
+  if (Component) {
+    return <Component />;
+  }
+  return (
+    <Page title={title} slug={path.slice(1)}>
+      {title} (No Component)
+    </Page>
+  );
+};
+
 function App() {
   const routes = pages.map(({
     path,
@@ -52,7 +76,7 @@ function App() {
     <Route
       key={`route-${key}`}
       path={path}
-      element={Component ? <Component /> : <>{title} View (No Component)</>}
+      element={ComponentOrPage({ path, title, key, Component })}
     />
   ));
 

@@ -43,7 +43,7 @@ export function Tags() {
   };
 
   return (
-    <Page slug="tags">
+    <Page title="Tags" slug="tags">
       <h3>Tags</h3>
       <form onSubmit={onSubmit}>
         <Input

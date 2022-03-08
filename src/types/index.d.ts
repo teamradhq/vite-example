@@ -6,7 +6,6 @@ type Spaceship = -1 | 0 | 1;
 type ChangeEventHandler<Element> = React.ChangeEventHandler<Element>;
 type MouseEventHandler<Element> = React.MouseEventHandler<Element>;
 
-
 interface PageEntry {
   path: string,
   title: string,
@@ -21,6 +20,7 @@ declare namespace Props {
 
   interface Page {
     slug: string,
+    title: string,
   }
 
   namespace Ui {
