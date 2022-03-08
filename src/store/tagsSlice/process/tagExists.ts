@@ -1,8 +1,9 @@
 import { Draft } from '@reduxjs/toolkit';
 
 const isExistingTag = (tag: State.Tags.New) => (
-  ({ name }: State.Tags.Tag) => (
+  ({ name, group }: State.Tags.Tag) => (
     name.toLowerCase() === tag.name.toLowerCase()
+    && group?.toLowerCase() === tag?.group?.toLowerCase()
   )
 );
 
