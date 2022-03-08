@@ -10,7 +10,7 @@ export const List: FC<Props.Tags.List> = function TagList(props) {
   ));
 
   return (
-    <ul className="tag-list">
+    <ul className="tag-list" data-testid="tag-list">
       {children}
     </ul>
   );
