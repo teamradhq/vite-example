@@ -3,7 +3,9 @@ jest.mock('uuid');
 const mockV4 = jest.mocked(v4);
 
 import { uuid } from '@src/services/uuid';
-import { DefineKeyOptions } from '@src/services/uuid';
+import { prefixSuffix } from '@src/utils/prefixSuffix';
+
+jest.mock('@src/utils/prefixSuffix');
 
 describe('services.uuid', () => {
   beforeAll(() => {
@@ -20,20 +22,23 @@ describe('services.uuid', () => {
 
   const cases: [
     string,
-    DefineKeyOptions | undefined,
+    Partial<PrefixOptions>,
     string
   ][] = [
-    ['generate', undefined, 'called'],
+    ['pass through', {}, 'called'],
     ['prefix', { prefix: 'prefix' }, 'prefix-called'],
     ['suffix', { suffix: 'suffix' }, 'called-suffix'],
     ['prefix & suffix', { prefix: 'prefix',  suffix: 'suffix' }, 'prefix-called-suffix'],
   ];
 
-  it.each(cases)('should %s random string', (_, input, expected) => {
+  it.each(cases)('should %s uuid string', (_, input, expected) => {
     expect.assertions(1);
 
-    const result = uuid(input);
+    uuid(input);
 
-    expect(result).toBe(expected);
+    expect(prefixSuffix).toHaveBeenCalledWith({
+      value: 'called',
+      ...input,
+    });
   });
 });
