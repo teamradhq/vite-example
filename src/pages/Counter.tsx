@@ -5,7 +5,9 @@ import {
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
 import { increment, decrement } from '@src/store/counterSlice';
 import { selectCounter } from '@src/store/selectors';
+
 import { Button } from '@src/components/Ui/Button';
+import { Page } from '@src/pages/Page';
 
 import './Counter.css';
 
@@ -22,13 +24,13 @@ export function Counter() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="page page-counter">
+    <Page slug="counter">
       <h2>Counter</h2>
       <DisplayCount count={count} />
       <p className="increment">
         <Button text="-" onClick={() => dispatch(decrement())} />
         <Button text="+" onClick={() => dispatch(increment())} />
       </p>
-    </div>
+    </Page>
   );
 }

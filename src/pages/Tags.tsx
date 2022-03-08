@@ -12,6 +12,7 @@ import {
   selectTags,
 } from '@src/store/tagsSlice/selectors';
 
+import { Page } from '@src/pages/Page';
 import { List, EditForm, DeleteForm } from '@src/components/Tags';
 import { Input, Modal } from '@src/components/Ui';
 
@@ -42,13 +43,13 @@ export function Tags() {
   };
 
   return (
-    <div className="page page-tags">
+    <Page slug="tags">
       <h3>Tags</h3>
       <form onSubmit={onSubmit}>
         <Input
-           value={addNew}
-           onChange={onChange}
-           ref={inputRef}
+          value={addNew}
+          onChange={onChange}
+          ref={inputRef}
         />
       </form>
       <List tags={tags} />
@@ -65,6 +66,6 @@ export function Tags() {
       <Modal text="Awesome" >
         <h1>This is some Content</h1>
       </Modal>
-    </div>
+    </Page>
   );
 }

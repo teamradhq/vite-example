@@ -19,6 +19,10 @@ declare namespace Props {
     pages: Pick<PageEntry, 'path' | 'title' | 'key'>[]
   }
 
+  interface Page {
+    slug: string,
+  }
+
   namespace Ui {
     interface Button {
       text: string,

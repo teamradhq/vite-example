@@ -1,15 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { uuid } from '@src/services/uuid';
 
+import { uuid } from '@src/services/uuid';
 import { store } from '@src/store';
 
 import { NavLinks } from '@src/components/NavLinks';
-import { Counter } from '@src/pages/Counter';
-import { Tags } from '@src/pages/Tags';
+import { Counter, Tabs, Tags } from '@src/pages';
 
 import './App.css';
-import { FC } from 'react';
 
 const pageKey = () => uuid({ prefix: 'page' });
 
@@ -31,10 +29,16 @@ const pages: PageEntry[] = [
     Component: Counter,
   },
   {
-    path: '/data',
+    path: '/tags',
     title: 'Tags',
     key: pageKey(),
     Component: Tags,
+  },
+  {
+    path: '/tabs',
+    title: 'Tabs',
+    key: pageKey(),
+    Component: Tabs,
   },
 ];
 

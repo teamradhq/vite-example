@@ -1,3 +1,7 @@
+:root {
+  --container-max-width: 75rem;
+}
+
 body {
   margin: 0;
   background-color: #333;
