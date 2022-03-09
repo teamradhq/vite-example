@@ -1,42 +1,62 @@
 import { setMetaDescription } from '@src/utils/setMetaDescription';
 
-const clearHead = () => {
-  while (document.head.lastChild) {
-    document.head.removeChild(document.head.lastChild);
-  }
+type TestCase = [
+  string,
+    string | undefined,
+  string,
+  TestSetupOptions?,
+];
+
+type TestSetupOptions = {
+  init?: boolean,
+  clear?: boolean,
 };
 
-const initMeta = () => {
-  const meta = document.createElement('meta');
-  meta.name='description';
-  meta.content='test';
-  document.head.appendChild(meta);
+const setup = (content?: string, { clear, init }: TestSetupOptions = {}) => {
+  while (clear && document.head.lastChild) {
+    document.head.removeChild(document.head.lastChild);
+  }
+
+  if (init) {
+    const meta = document.createElement('meta');
+    meta.name='description';
+    meta.content='test';
+    document.head.appendChild(meta);
+  }
+
+  setMetaDescription(content);
+
+  return document.head.querySelector('meta[name=description]');
 };
 
 describe('utils.setMetaDescription', () => {
-  beforeAll(() => {
-    process.env.APP_TITLE = 'Test Title';
+  const OLD_ENV = { ...process.env };
+
+  beforeEach(() => {
+    jest.resetModules();
+
+    process.env = {
+      ...OLD_ENV,
+      APP_DESCRIPTION: 'Test Environment',
+    };
   });
 
-  it('should update existing meta', () => {
-    expect.assertions(1);
-    initMeta();
-
-    setMetaDescription('something');
-    const meta = document.head.querySelector('meta[name=description]');
-
-    expect(meta?.getAttribute('content'))
-      .toBe('something');
+  afterAll(() => {
+    process.env = OLD_ENV;
   });
 
-  it('should create new meta', () => {
-    expect.assertions(1);
-    clearHead();
+  const cases: TestCase[] = [
+    ['update meta description', 'something', 'something', { init: true }],
+    ['create meta description', 'something', 'something', { clear: true }],
+    ['set default meta description', undefined, 'Test Environment', {}],
+  ];
 
-    setMetaDescription('something');
-    const meta = document.head.querySelector('meta[name=description]');
+  it.each(cases)('should %s', (_, content, expected, options) => {
+    expect.assertions(1);
+
+    const meta = setup(content, options);
 
     expect(meta?.getAttribute('content'))
-      .toBe('something');
+      .toBe(expected);
   });
 });
