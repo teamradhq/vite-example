@@ -24,7 +24,11 @@ export function Counter() {
   const dispatch = useAppDispatch();
 
   return (
-    <Page title="Counter" slug="counter">
+    <Page
+      title="Counter"
+      slug="counter"
+      description="A simple counter from the Vite example template."
+    >
       <h2>Counter</h2>
       <DisplayCount count={count} />
       <p className="increment">
