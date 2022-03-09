@@ -59,9 +59,7 @@ declare namespace Props {
       tags?: State.Tags.Tag[],
     }
 
-    interface ListItem {
-      index: number;
-    }
+    type ListItem = State.Tags.Tag
   }
 }
 
