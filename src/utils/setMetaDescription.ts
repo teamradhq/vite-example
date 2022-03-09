@@ -14,7 +14,6 @@ function createMetaElement() {
 
 /**
  * Get the meta description from document head.
- *
  */
 function getMeta() {
   const element = document.head

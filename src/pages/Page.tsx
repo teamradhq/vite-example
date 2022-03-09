@@ -1,6 +1,9 @@
 import { FC } from 'react';
 
-import { setDocumentTitle } from '@src/utils/setDocumentTitle';
+import {
+  setDocumentTitle,
+  setMetaDescription,
+} from '@src/utils';
 
 import './Page.css';
 
@@ -9,7 +12,12 @@ export const Page: FC<Props.Page> = function Page(props) {
     children,
     slug,
     title,
+    description,
   } = props;
+
+  if (description) {
+    setMetaDescription(description);
+  }
 
   setDocumentTitle(title);
 

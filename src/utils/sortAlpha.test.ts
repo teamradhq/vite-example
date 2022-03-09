@@ -1,4 +1,4 @@
-import { sortAlpha } from '@src/utils/sortAlpha';
+import { sortAlpha } from '@src/utils';
 
 describe('utils.sortAlpha', () => {
   const cases: [number, string, string][] = [

@@ -27,6 +27,7 @@ declare namespace Props {
   interface Page {
     slug: string,
     title: string,
+    description?: string,
   }
 
   namespace Ui {

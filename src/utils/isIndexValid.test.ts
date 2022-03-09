@@ -1,4 +1,4 @@
-import { isIndexValid } from '@src/utils/isIndexValid';
+import { isIndexValid } from '@src/utils';
 
 describe('utils.isIndexValid', () => {
   let array: number[];

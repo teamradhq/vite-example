@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { setDocumentTitle } from '@src/utils/setDocumentTitle';
+import { setDocumentTitle } from '@src/utils';
 
 import './index.css';
 import App from './App';

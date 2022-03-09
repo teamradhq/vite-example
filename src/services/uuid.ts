@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 
-import { prefixSuffix } from '@src/utils/prefixSuffix';
+import { prefixSuffix } from '@src/utils';
 
 /**
  * Service container for `uuid` which is used for generating unique ids.

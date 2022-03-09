@@ -1,4 +1,4 @@
-import { prefixSuffix } from '@src/utils/prefixSuffix';
+import { prefixSuffix } from '@src/utils';
 
 /**
  * Set document title to the app name and add prefix.
