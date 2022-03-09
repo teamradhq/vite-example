@@ -30,8 +30,6 @@ const setup = (content?: string, { clear, init }: TestSetupOptions = {}) => {
 };
 
 describe('utils.setMetaDescription', () => {
-  const OLD_ENV = { ...process.env };
-
   beforeEach(() => {
     jest.resetModules();
 

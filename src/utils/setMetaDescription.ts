@@ -28,5 +28,6 @@ function getMeta() {
  * @param content
  */
 export function setMetaDescription(content?: string) {
-  getMeta().setAttribute('content', String(content || process.env.APP_DESCRIPTION));
+  getMeta().setAttribute(
+    'content', content || process.env.APP_DESCRIPTION);
 }
