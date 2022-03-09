@@ -5,13 +5,18 @@ jest.mock('@src/utils/prefixSuffix');
 const mockPrefixSuffix = jest.mocked(prefixSuffix);
 
 describe('utils.setDocumentTitle', () => {
-  beforeAll(() => {
-    process.env.APP_TITLE = 'Test Title';
+  beforeEach(() => {
+    process.env = {
+      ...OLD_ENV,
+      APP_TITLE: 'Test Title',
+    };
 
     mockPrefixSuffix.mockClear()
-      .mockImplementation(({ prefix, value }, separator) => (
-        Object.values([prefix, value, separator]).join('::')
-      ));
+      .mockReturnValue('called');
+  });
+
+  afterAll(() => {
+    process.env = { ...OLD_ENV };
   });
 
   it('should set the document title to app title', () => {
@@ -23,23 +28,15 @@ describe('utils.setDocumentTitle', () => {
     expect(mockPrefixSuffix).not.toHaveBeenCalled();
   });
 
-
-  it('should include prefix in document title', () => {
-    expect.assertions(1);
-
-    setDocumentTitle('Foo');
-
-    expect(document.title).toBe('Foo::Test Title:: |');
-  });
-
   it('should prefix title with separator', () => {
-    expect.assertions(1);
+    expect.assertions(2);
 
     setDocumentTitle('foo');
 
+    expect(document.title).toBe('called');
     expect(mockPrefixSuffix).toHaveBeenCalledWith({
       prefix: 'foo',
-      value: expect.any(String),
+      value: 'Test Title',
     }, ' | ');
   });
 });
