@@ -27,7 +27,7 @@ export function ListItem({
   };
 
   return (
-    <li className="tag-list-item">
+    <li className="tag-list-item" data-testid="list-item">
       <span className="tag-label">
         {index} :: {name} :: ({group})
       </span>
