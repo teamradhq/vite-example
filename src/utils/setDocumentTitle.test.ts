@@ -8,10 +8,10 @@ describe('utils.setDocumentTitle', () => {
   beforeAll(() => {
     process.env.APP_TITLE = 'Test Title';
 
-    mockPrefixSuffix.mockClear();
-    mockPrefixSuffix.mockImplementation(({ prefix, value }, separator) => (
-      Object.values([prefix, value, separator]).join('::')
-    ));
+    mockPrefixSuffix.mockClear()
+      .mockImplementation(({ prefix, value }, separator) => (
+        Object.values([prefix, value, separator]).join('::')
+      ));
   });
 
   it('should set the document title to app title', () => {
