@@ -6,11 +6,15 @@ import { prefixSuffix } from '@src/utils/prefixSuffix';
  * @param prefix
  */
 export function setDocumentTitle(prefix?: string) {
-  const value = String(process.env.APP_TITLE);
   const isHome = prefix?.toLowerCase().trim() === 'home';
+  let value = String(process.env.APP_TITLE);
 
-  document.title = (!isHome && prefix
-      ? prefixSuffix({ prefix, value }, ' | ')
-      : value
-  );
+  if (prefix && !isHome) {
+    value = prefixSuffix({
+      prefix,
+      value,
+    }, ' | ');
+  }
+
+  document.title = value;
 }

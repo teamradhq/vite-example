@@ -6,7 +6,7 @@ const config: Config.InitialOptions = {
   clearMocks: true,
   collectCoverage: false,
   coverageDirectory: 'coverage',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest.setup.ts'],
   coverageReporters: [
     'text',
     'html',
