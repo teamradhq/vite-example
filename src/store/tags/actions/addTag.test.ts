@@ -1,4 +1,4 @@
-import { addTag } from '@src/store/tagsSlice/actions/addTag';
+import { addTag } from '@src/store/tags/actions/addTag';
 // eslint-disable-next-line jest/no-mocks-import
 import { newStore } from '@src/__mocks__/tagStore.mock';
 
@@ -6,9 +6,9 @@ import {
   tagExists,
   newTag,
   sortTags,
-} from '@src/store/tagsSlice/process';
+} from '@src/store/tags/process';
 
-jest.mock('@src/store/tagsSlice/process');
+jest.mock('@src/store/tags/process');
 
 type Tag = State.Tags.Tag;
 

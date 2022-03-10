@@ -1,7 +1,7 @@
-import { newTag } from '@src/store/tagsSlice/process/newTag';
+import { newTag } from '@src/store/tags/process/newTag';
 
-import { tagKey } from '@src/store/tagsSlice/process/tagKey';
-jest.mock('@src/store/tagsSlice/process/tagKey');
+import { tagKey } from '@src/store/tags/process/tagKey';
+jest.mock('@src/store/tags/process/tagKey');
 const mockTagKey = jest.mocked(tagKey);
 
 describe('store.tags.process.newTag', () => {

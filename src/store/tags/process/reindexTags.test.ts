@@ -1,4 +1,4 @@
-import { reindexTags } from '@src/store/tagsSlice/process/reindexTags';
+import { reindexTags } from '@src/store/tags/process/reindexTags';
 
 describe('store.tags.process.reindexTags', () => {
   let store: State.Tags.Store;

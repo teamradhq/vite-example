@@ -1,10 +1,10 @@
-import { sortTags } from '@src/store/tagsSlice/process/sortTags';
+import { sortTags } from '@src/store/tags/process/sortTags';
 
 import { sortAlpha } from '@src/utils/sortAlpha';
-import { reindexTags } from '@src/store/tagsSlice/process/reindexTags';
+import { reindexTags } from '@src/store/tags/process/reindexTags';
 
 jest.mock('@src/utils/sortAlpha');
-jest.mock('@src/store/tagsSlice/process/reindexTags');
+jest.mock('@src/store/tags/process/reindexTags');
 
 const mocks = {
   sort: jest.mocked(sortAlpha),

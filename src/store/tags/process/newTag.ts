@@ -1,4 +1,4 @@
-import { tagKey } from '@src/store/tagsSlice/process/tagKey';
+import { tagKey } from '@src/store/tags/process/tagKey';
 
 /**
  * New tag should have a name and random key only.

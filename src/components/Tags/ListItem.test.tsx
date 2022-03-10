@@ -1,10 +1,10 @@
 import { render, fireEvent } from '@testing-library/react';
 
 import { useAppDispatch } from '@src/store/hooks';
-import { setActiveDialog } from '@src/store/tagsSlice';
+import { setActiveDialog } from '@src/store/tags';
 
 jest.mock('@src/store/hooks');
-jest.mock('@src/store/tagsSlice');
+jest.mock('@src/store/tags');
 
 const mocks = {
   useAppDispatch: jest.mocked(useAppDispatch),

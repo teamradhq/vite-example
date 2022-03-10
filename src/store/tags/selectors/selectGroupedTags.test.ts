@@ -1,4 +1,4 @@
-import { selectGroupedTags } from '@src/store/tagsSlice/selectors/selectGroupedTags';
+import { selectGroupedTags } from '@src/store/tags/selectors/selectGroupedTags';
 
 import { RootState } from '@src/store';
 // eslint-disable-next-line jest/no-mocks-import

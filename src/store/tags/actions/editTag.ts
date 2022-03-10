@@ -4,7 +4,7 @@ import {
   isTagEdited,
   sortTags,
   tagExists,
-} from '@src/store/tagsSlice/process';
+} from '@src/store/tags/process';
 
 /**
  * Delete supplied tag from the store

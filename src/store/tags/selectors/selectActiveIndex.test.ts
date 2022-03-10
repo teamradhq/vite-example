@@ -1,4 +1,4 @@
-import { selectActiveIndex } from '@src/store/tagsSlice/selectors/selectActiveIndex';
+import { selectActiveIndex } from '@src/store/tags/selectors/selectActiveIndex';
 
 import { RootState } from '@src/store';
 

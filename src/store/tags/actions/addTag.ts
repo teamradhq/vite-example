@@ -3,7 +3,7 @@ import {
   tagExists,
   newTag,
   sortTags,
-} from '@src/store/tagsSlice/process';
+} from '@src/store/tags/process';
 
 /**
  * Validate, then add valid tag to the store.

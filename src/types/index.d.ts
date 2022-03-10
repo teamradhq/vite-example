@@ -52,6 +52,11 @@ declare namespace Props {
     }
 
     type Input<Value = string> = IFormElement<HTMLInputElement, Value>
+
+    interface Table<DataType> {
+      labels?: [string, string][],
+      data: DataType[]
+    }
   }
 
   namespace Tags {

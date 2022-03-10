@@ -1,4 +1,4 @@
-import { tagKey } from '@src/store/tagsSlice/process/tagKey';
+import { tagKey } from '@src/store/tags/process/tagKey';
 
 import { uuid } from '@src/services/uuid';
 jest.mock('@src/services/uuid');

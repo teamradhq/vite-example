@@ -1,4 +1,4 @@
-import { selectActiveDialog } from '@src/store/tagsSlice/selectors/selectActiveDialog';
+import { selectActiveDialog } from '@src/store/tags/selectors/selectActiveDialog';
 
 import { RootState } from '@src/store';
 

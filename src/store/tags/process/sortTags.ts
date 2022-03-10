@@ -1,5 +1,5 @@
 import { Draft } from '@reduxjs/toolkit';
-import { reindexTags } from '@src/store/tagsSlice/process/reindexTags';
+import { reindexTags } from '@src/store/tags/process/reindexTags';
 import { sortAlpha } from '@src/utils';
 
 /**

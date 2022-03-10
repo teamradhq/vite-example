@@ -6,11 +6,11 @@ import type {
 import { uuid } from '@src/services/uuid';
 
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
-import { addTag } from '@src/store/tagsSlice';
+import { addTag } from '@src/store/tags';
 import {
   selectGroupedTags,
   selectTags,
-} from '@src/store/tagsSlice/selectors';
+} from '@src/store/tags/selectors';
 
 import { Page } from '@src/pages/Page';
 import { List, EditForm, DeleteForm } from '@src/components/Tags';

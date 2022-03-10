@@ -1,4 +1,4 @@
-import { isTagEdited } from '@src/store/tagsSlice/process/isTagEdited';
+import { isTagEdited } from '@src/store/tags/process/isTagEdited';
 
 
 describe('store.tags.process.isTagEdited', () => {

@@ -1,5 +1,5 @@
 import { Draft, PayloadAction } from '@reduxjs/toolkit';
-import { reindexTags } from '@src/store/tagsSlice/process';
+import { reindexTags } from '@src/store/tags/process';
 
 /**
  * Delete supplied tag from the store

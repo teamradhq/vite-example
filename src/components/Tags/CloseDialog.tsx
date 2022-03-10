@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@src/store/hooks';
-import { setActiveDialog } from '@src/store/tagsSlice';
+import { setActiveDialog } from '@src/store/tags';
 
 import { Button } from '@src/components/Ui';
 import { MouseEventHandler } from 'react';

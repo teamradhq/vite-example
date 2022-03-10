@@ -5,11 +5,11 @@ import {
 
 import { DEFAULT_GROUP } from '@src/constants';
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
-import { editTag } from '@src/store/tagsSlice';
+import { editTag } from '@src/store/tags';
 import {
   selectActiveDialog,
   selectActiveTag,
-} from '@src/store/tagsSlice/selectors';
+} from '@src/store/tags/selectors';
 import {
   Button,
   Input,

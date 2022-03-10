@@ -1,4 +1,4 @@
-import { tagExists } from '@src/store/tagsSlice/process/tagExists';
+import { tagExists } from '@src/store/tags/process/tagExists';
 
 describe('store.tags.process.tagExists', () => {
   let store: State.Tags.Store;

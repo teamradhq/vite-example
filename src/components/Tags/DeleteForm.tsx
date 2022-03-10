@@ -1,9 +1,9 @@
 import { useAppSelector, useAppDispatch } from '@src/store/hooks';
-import { deleteTag } from '@src/store/tagsSlice';
+import { deleteTag } from '@src/store/tags';
 import {
   selectActiveDialog,
   selectActiveTag,
-} from '@src/store/tagsSlice/selectors';
+} from '@src/store/tags/selectors';
 
 import { Button } from '@src/components/Ui/Button';
 import { CloseDialog } from '@src/components/Tags/CloseDialog';
