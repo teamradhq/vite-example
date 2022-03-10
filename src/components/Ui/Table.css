@@ -1,0 +1,16 @@
+.ui-table {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+
+  tr {
+    background-color: #555;
+
+    &:nth-of-type(2n) {
+      background-color: #444;
+    }
+  }
+
+  td {
+    border: none;
+  }
+}

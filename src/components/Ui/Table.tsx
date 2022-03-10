@@ -1,22 +1,39 @@
 import { PropsWithChildren } from 'react';
 import { uuid } from '@src/services/uuid';
 
+import './Table.css';
 
-type Props<DataType> = PropsWithChildren<Props.Ui.Table<DataType>>
-export function Table<DataType>(props: Props<DataType>) {
+export function Cell<CellType>(props: Props.Ui.Cell<CellType>) {
+
+  return (
+    <td data-testid="ui-table-cell">
+      {props.value}
+    </td>
+  );
+}
+
+export function Row<DataType>(props: Props.Ui.Row<DataType>) {
+
+  return (
+    <tr data-testid="ui-table-row">{
+      Object.values(props.data).map((value) => (
+        <Cell key={uuid()} value={value} />
+      ))
+    }</tr>
+  );
+}
+
+
+export function Table<DataType>(
+  props: PropsWithChildren<Props.Ui.Table<DataType>>,
+) {
   const { data } = props;
 
   return (
-    <table data-testid="ui-table">
+    <table className="ui-table" data-testid="ui-table">
       <tbody>
         {data.map((row) => (
-          <tr key={`row-${uuid()}`}>
-            {Object.entries(row).map(([key, cell]) => (
-              <td  key={`cell-${uuid()}`}>
-                {key} - {cell}
-              </td>
-            ))}
-          </tr>
+          <Row key={uuid()} data={row} />
         ))}
       </tbody>
     </table>

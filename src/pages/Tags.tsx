@@ -14,7 +14,7 @@ import {
 
 import { Page } from '@src/pages/Page';
 import { List, EditForm, DeleteForm } from '@src/components/Tags';
-import { Input, Modal } from '@src/components/Ui';
+import { Input, Modal, Table } from '@src/components/Ui';
 
 import './Tags.css';
 
@@ -71,6 +71,10 @@ export function Tags() {
       <Modal text="Awesome" >
         <h1>This is some Content</h1>
       </Modal>
+      <Table
+        hide={['key']}
+        data={tags}
+      />
     </Page>
   );
 }

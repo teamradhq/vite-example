@@ -1,15 +1,7 @@
-import { render, fireEvent } from '@testing-library/react';
-
-import { useAppDispatch } from '@src/store/hooks';
-import { setActiveDialog } from '@src/store/tags';
+import { render } from '@testing-library/react';
 
 jest.mock('@src/store/hooks');
 jest.mock('@src/store/tags');
-
-const mocks = {
-  useAppDispatch: jest.mocked(useAppDispatch),
-  setActiveDialog: jest.mocked(setActiveDialog),
-};
 
 import { ListItem } from '@src/components/Tags/ListItem';
 
@@ -59,16 +51,5 @@ describe('components.Tags.List', () => {
     const label = utils.findByText('1 :: 1 :: (group)');
 
     expect(label).toBeTruthy();
-  });
-
-  it.skip('should open edit dialog', async () => {
-    expect.assertions(1);
-
-    const { utils } = await setup({ ...Tag() });
-    const edit = await utils.findByText('Edit');
-    fireEvent.click(edit);
-
-    expect(mocks.useAppDispatch).toHaveBeenCalled();
-    expect(mocks.setActiveDialog).toHaveBeenCalled();
   });
 });

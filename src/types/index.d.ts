@@ -53,9 +53,22 @@ declare namespace Props {
 
     type Input<Value = string> = IFormElement<HTMLInputElement, Value>
 
-    interface Table<DataType> {
+    interface DisplayFields<DataType> {
+      show?: (keyof DataType)[],
+      hide?: (keyof DataType)[],
+    }
+
+    interface Table<DataType> extends DisplayFields<DataType> {
       labels?: [string, string][],
-      data: DataType[]
+      data: DataType[],
+    }
+
+    interface Row<DataType> extends DisplayFields<DataType> {
+      data: DataType,
+    }
+
+    interface Cell<CellType> {
+      value: CellType,
     }
   }
 
